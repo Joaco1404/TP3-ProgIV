@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserva de Vuelos</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <h1>Formulario de Reserva de Vuelos</h1>
+    <form id="flightForm">
+        <fieldset>
+            <legend>Datos del Pasajero</legend>
+            <label for="fullName">Nombre completo:</label>
+            <input type="text" id="fullName" name="fullName" required pattern="[A-Za-z\s]{3,}" />
+            <span class="error hidden" id="fullNameError">Debe tener al menos 3 caracteres y solo letras y
+                espacios.</span>
+            <span class="success hidden" id="fullNameSuccess">¡Campo válido!</span>
+
+            <label for="passportNumber">Número de pasaporte o identificación:</label>
+            <input type="text" id="passportNumber" name="passportNumber" required pattern="[A-Za-z0-9]{8,}" />
+            <span class="error hidden" id="passportNumberError">Debe ser alfanumérico y tener al menos 8
+                caracteres.</span>
+            <span class="success hidden" id="passportNumberSuccess">¡Campo válido!</span>
+
+            <label for="birthDate">Fecha de nacimiento (dd/mm/yyyy):</label>
+            <input type="text" id="birthDate" name="birthDate" required pattern="\d{2}/\d{2}/\d{4}" />
+            <span class="error hidden" id="birthDateError">Debe tener el formato dd/mm/yyyy y ser mayor de 18
+                años.</span>
+            <span class="success hidden" id="birthDateSuccess">¡Campo válido!</span>
+
+            <label for="nationality">Nacionalidad:</label>
+            <select id="nationality" name="nationality" required>
+                <option value="">Seleccione un país</option>
+                <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+            </select>
+            <span class="error hidden" id="nationalityError">Debe seleccionar un país.</span>
+            <span class="success hidden" id="nationalitySuccess">¡Campo válido!</span>
+
+            <fieldset>
+                <legend>Datos del Vuelo</legend>
+                <label for="originCity">Ciudad de origen:</label>
+                <select id="originCity" name="originCity" required>
+                    <option value="">Seleccione un aeropuerto</option>
+                    <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+                </select>
+                <span class="error hidden" id="originCityError">Debe ser un aeropuerto válido.</span>
+                <span class="success hidden" id="originCitySuccess">¡Campo válido!</span>
+
+                <label for="destinationCity">Ciudad de destino:</label>
+                <select id="destinationCity" name="destinationCity" required>
+                    <option value="">Seleccione un aeropuerto</option>
+                    <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+                </select>
+                <span class="error hidden" id="destinationCityError">Debe ser una ciudad válida y diferente de la ciudad
+                    de origen.</span>
+                <span class="success hidden" id="destinationCitySuccess">¡Campo válido!</span>
+
+                <label for="departureDate">Fecha de salida:</label>
+                <input type="date" id="departureDate" name="departureDate" required />
+                <span class="error hidden" id="departureDateError">Debe ser una fecha futura.</span>
+                <span class="success hidden" id="departureDateSuccess">¡Campo válido!</span>
+
+                <label for="returnDate">Fecha de regreso (si aplica):</label>
+                <input type="date" id="returnDate" name="returnDate" />
+                <span class="error hidden" id="returnDateError">Debe ser posterior a la fecha de salida.</span>
+                <span class="success hidden" id="returnDateSuccess">¡Campo válido!</span>
+
+                <label for="flightClass">Clase de vuelo:</label>
+                <select id="flightClass" name="flightClass" required>
+                    <option value="economica">Económica</option>
+                    <option value="ejecutiva">Ejecutiva</option>
+                    <option value="primera">Primera Clase</option>
+                </select>
+                <span class="error hidden" id="flightClassError">Debe seleccionar una clase de vuelo.</span>
+                <span class="success hidden" id="flightClassSuccess">¡Campo válido!</span>
+
+                <label for="ticketNumber">Número de boletos:</label>
+                <input type="number" id="ticketNumber" name="ticketNumber" required min="1" max="10" />
+                <span class="error hidden" id="ticketNumberError">Debe ser un número entre 1 y 10.</span>
+                <span class="success hidden" id="ticketNumberSuccess">¡Campo válido!</span>
+            </fieldset>
+
+            <fieldset>
+                <legend>Datos de Pago</legend>
+                <label for="creditCardNumber">Número de tarjeta de crédito:</label>
+                <input type="text" id="creditCardNumber" name="creditCardNumber" required pattern="\d{16}" />
+                <span class="error hidden" id="creditCardNumberError">Debe tener 16 dígitos.</span>
+                <span class="success hidden" id="creditCardNumberSuccess">¡Campo válido!</span>
+
+                <label for="expirationDate">Fecha de vencimiento (MM/AA):</label>
+                <input type="text" id="expirationDate" name="expirationDate" required pattern="\d{2}/\d{2}" />
+                <span class="error hidden" id="expirationDateError">Debe tener el formato MM/AA y estar en el
+                    futuro.</span>
+                <span class="success hidden" id="expirationDateSuccess">¡Campo válido!</span>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required pattern="\d{3,4}" />
+                <span class="error hidden" id="cvvError">Debe tener 3 o 4 dígitos.</span>
+                <span class="success hidden" id="cvvSuccess">¡Campo válido!</span>
+
+                <label for="cardName">Nombre en la tarjeta:</label>
+                <input type="text" id="cardName" name="cardName" required pattern="[A-Za-z\s]+" />
+                <span class="error hidden" id="cardNameError">Debe contener solo letras y espacios.</span>
+                <span class="success hidden" id="cardNameSuccess">¡Campo válido!</span>
+            </fieldset>
+
+            <button type="submit" id="submitButton" disabled>Reservar</button>
+            <span class="error hidden" id="formError">Por favor, complete todos los campos correctamente.</span>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
